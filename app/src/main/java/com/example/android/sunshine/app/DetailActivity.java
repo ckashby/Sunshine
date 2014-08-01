@@ -18,6 +18,7 @@ package com.example.android.sunshine.app;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
@@ -222,6 +223,10 @@ public class DetailActivity extends ActionBarActivity {
                     dateString, weatherDescription, high, low);
 
             Log.v(LOG_TAG, "Forecast String: " + mForecastStr);
+
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.GINGERBREAD_MR1) {
+                getActivity().invalidateOptionsMenu();
+            }
         }
 
         @Override
